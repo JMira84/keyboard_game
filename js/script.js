@@ -3,7 +3,7 @@ const keyboard = {
         numberOfRows: 4,
         rowsWrapper: null,
         rows: [],
-        rowsKeys: [
+        keysForRows: [
             ['\\', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'del'],
             ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '+'],
             ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter'],
@@ -28,8 +28,10 @@ const keyboard = {
         }
     },
     renderKeys(rowIndex) {
-        for (let i = 0; i < this.data.rowsKeys[rowIndex].length; i++) {
-            const value = this.data.rowsKeys[rowIndex][i];
+        const rowKeys = this.data.keysForRows[rowIndex];
+
+        for (let i = 0; i < rowKeys.length; i++) {
+            const value = rowKeys[i];
             const createdKeys = this.data.rows[rowIndex].appendChild(document.createElement('div'));
 
             createdKeys.classList.add('key');
